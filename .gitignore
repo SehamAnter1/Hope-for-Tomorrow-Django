@@ -1,0 +1,70 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+*.env
+
+# Django stuff:
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+staticfiles/
+media/
+
+# Local settings
+*.local
+
+# Secret key and environment variables
+.env
+*.env.*
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Testing results
+.pytest_cache/
+.junit/
+
+# IDE and Editor folders/files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+ehthumbs.db
+
+# Node.js files (if using for frontend integration)
+node_modules/
+
+# Yarn/PNPM/lock files (if applicable)
+yarn.lock
+pnpm-lock.yaml
+
+# Build files
+build/
+dist/
+*.egg-info/
+.eggs/
