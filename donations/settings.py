@@ -37,8 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts'
+    'corsheaders',
+    'accounts',
+    'zoom_app'
 ]
+# zoom meeting
+ZOOM_CLIENT_ID = 'TLOdOul9SgqtoXNFCAslAA'
+ZOOM_CLIENT_SECRET = '5LnaufU065CJHCdYrKXPNDjzxqkbQ7A3'
+ZOOM_REDIRECT_URI = 'http://localhost:5174/zoom/redirect/'
+
 # auth model
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -50,7 +57,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
+CSRF_COOKIE_SECURE = False
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000','http://localhost:8000', 'http://127.0.0.1:8000']  
 
 ROOT_URLCONF = 'donations.urls'
 
