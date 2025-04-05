@@ -26,7 +26,6 @@ class CustomUserAdmin(UserAdmin):
         }),
     )
 
-    # Save method for automatically setting the username to email
     def save_model(self, request, obj, form, change):
         if not obj.username:
             obj.username = obj.email 
