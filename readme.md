@@ -25,7 +25,7 @@ A full-featured Donations Web App built with **Django** and **Django Rest Framew
 ## ⚙️ Setup
 
 ```bash
-git clone https://github.com/yourusername/donation-platform.git
+git clone https://github.com/sehamanter1/donation-platform.git
 cd donation-platform
 python -m venv env
 source env/bin/activate  # On Windows: env\Scripts\activate
