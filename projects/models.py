@@ -20,7 +20,7 @@ class Projects (models.Model):
     description_ar =models.TextField(null=True,blank=True)
     cover = models.ImageField(upload_to='project_covers/')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='projects')
-    Categories=models.ManyToManyField(Category, related_name='projects',blank=True)
+    categories=models.ManyToManyField(Category, related_name='projects',blank=True)
     price_goal = models.DecimalField(max_digits=20, decimal_places=2)
     donations_amount = models.DecimalField(max_digits=20, decimal_places=2, default=0.00)
     donations_count = models.IntegerField(default=0)
@@ -29,7 +29,7 @@ class Projects (models.Model):
     # update progress
     def update_progress(self):
         if(self.donations_count>0):
-            self.progress (self.donations_amount/self.price_goal)*100
+            self.progress = (self.donations_amount/self.price_goal)*100
             self.save()
 
 
