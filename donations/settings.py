@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,14 +23,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')  
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True' 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',') if not DEBUG else ['*']
 
+load_dotenv()
+DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',') if not DEBUG else ['*']
+print("DEBUG",
+DEBUG)
 
 # ALLOWED_HOSTS = []
 
 
 # Application definition
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -40,13 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'accounts',
-    'projects'
+    'projects',
     'zoom_app'
 ]
 # zoom meeting
-ZOOM_CLIENT_ID = 'TLOdOul9SgqtoXNFCAslAA'
-ZOOM_CLIENT_SECRET = '5LnaufU065CJHCdYrKXPNDjzxqkbQ7A3'
-ZOOM_REDIRECT_URI = 'http://localhost:5174/zoom/redirect/'
+ZOOM_CLIENT_ID = os.environ.get('ZOOM_CLIENT_ID')
+ZOOM_CLIENT_SECRET = os.environ.get('ZOOM_CLIENT_SECRET')
+ZOOM_REDIRECT_URI = os.environ.get('ZOOM_REDIRECT_URI')
 
 # auth model
 AUTH_USER_MODEL = 'accounts.User'
