@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Projects, Category, ProjectImage
+from .models import Project, Category, ProjectImage
 
 # Inline for showing images inside Project admin
 class ProjectImageInline(admin.TabularInline):
@@ -7,7 +7,7 @@ class ProjectImageInline(admin.TabularInline):
     extra = 1  # Number of empty forms to show
     readonly_fields = ['image']  # Optional: if you just want to view image in admin
 
-@admin.register(Projects)
+@admin.register(Project)
 class ProjectsAdmin(admin.ModelAdmin):
     list_display = ('title', 'user', 'price_goal', 'donations_amount', 'progress', 'created_at')
     list_filter = ('created_at', 'categories')
