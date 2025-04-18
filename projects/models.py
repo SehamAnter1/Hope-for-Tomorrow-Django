@@ -48,7 +48,8 @@ class ProjectImage(models.Model):
 # ________ Donation Model ________        
 class Donation(models.Model):
     project=models.ForeignKey(Project,on_delete=models.CASCADE,related_name="donations")
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='donations')
+
     amount = models.DecimalField(max_digits=20, decimal_places=2, default=0.00)
     payment_status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('paid', 'Paid')])
     payment_reference = models.CharField(max_length=100, null=True, blank=True)    

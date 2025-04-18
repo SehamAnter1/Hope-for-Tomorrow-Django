@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Category, ProjectImage
+from .models import Project, Category, ProjectImage,Donation
 
 # Inline for showing images inside Project admin
 class ProjectImageInline(admin.TabularInline):
@@ -23,3 +23,6 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(ProjectImage)
 class ProjectImageAdmin(admin.ModelAdmin):
     list_display = ('project', 'image')
+@admin.register(Donation)
+class DonationAdmin(admin.ModelAdmin):
+    list_display = ('project', 'amount')
