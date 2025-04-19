@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('zoom/', include('zoom_app.urls')),  
+    path('api/', include('projects.urls')),  
 
 
 ]

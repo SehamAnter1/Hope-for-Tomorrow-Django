@@ -34,9 +34,6 @@ class Project (models.Model):
             self.progress = (self.donations_amount/self.price_goal)*100
             self.save()
 
-
-        
-
 # ________ Projects Images Model ________        
 class ProjectImage(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='images')
