@@ -6,7 +6,7 @@ from .serializers import ProjectSerializer,DonationSerializer,CategorySerializer
 
 
 # ___________________ CategoriesViewSet _____________________
-class CategoryViewSet(viewsets.ModelViewSet):
+class CategorViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     # check user is logged in

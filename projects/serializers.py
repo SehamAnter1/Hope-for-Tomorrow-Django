@@ -7,7 +7,7 @@ from rest_framework.exceptions import ValidationError
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['title', 'title_ar','description','description_ar','icon']
+        fields ='__all__'
 
 
 #_______________ ProjectSerializer ________________

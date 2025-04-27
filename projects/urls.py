@@ -2,10 +2,11 @@
 from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
-from .views import ProjectViewSet,DonationViewSet
+from .views import ProjectViewSet,DonationViewSet,CategoryViewSet
 router = DefaultRouter()
 router.register('projects', ProjectViewSet)
 router.register('donations', DonationViewSet)
+router.register('categories', CategoryViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
