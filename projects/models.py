@@ -30,9 +30,12 @@ class Project (models.Model):
     def __str__(self):
         return self.title
     def update_progress(self):
-        if(self.donations_count>0):
-            self.progress = (self.donations_amount/self.price_goal)*100
-            self.save()
+        if self.price_goal > 0:
+            self.progress = (self.donations_amount / self.price_goal) * 100
+        else:
+            self.progress = 0
+        self.save(update_fields=['progress'])
+
 
 # ________ Projects Images Model ________        
 class ProjectImage(models.Model):
@@ -52,4 +55,4 @@ class Donation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.project.title
+        return f"Donation of {self.amount} for {self.project.title} by {self.user.email}"
