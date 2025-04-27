@@ -7,7 +7,10 @@ from django.conf import settings
 class Category (models.Model):
     title=models.CharField(max_length=255)
     title_ar=models.CharField(max_length=255)
+    description =models.TextField(null=True,blank=True)
     description_ar =models.TextField(null=True,blank=True)
+    icon= models.ImageField(upload_to='categories_images/',null=True,blank=True, max_length=100)
+    
     def __str__(self):
         return self.title
         
