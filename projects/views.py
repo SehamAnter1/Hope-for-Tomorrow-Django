@@ -1,17 +1,22 @@
 from django.shortcuts import render
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets,permissions
+from rest_framework.permissions import IsAuthenticated,AllowAny
 from .models import Project,Donation,Category
 from .serializers import ProjectSerializer,DonationSerializer,CategorySerializer
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 # ___________________ CategoriesViewSet _____________________
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by('-id')
     serializer_class = CategorySerializer
+    parser_classes = (MultiPartParser, FormParser)
     # check user is logged in
-    permission_classes = [IsAuthenticated]
-
+    # permission_classes = [IsAuthenticated]
+    def get_permissions(self):
+        if self.action in ['list','retreive']:
+            return [AllowAny()]
+        return [IsAuthenticated()]
 
 # ___________________ProjectViewSet_____________________
 class ProjectViewSet(viewsets.ModelViewSet):
