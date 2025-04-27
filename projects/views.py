@@ -6,14 +6,11 @@ from .serializers import ProjectSerializer,DonationSerializer,CategorySerializer
 
 
 # ___________________ CategoriesViewSet _____________________
-class CategorViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all().order_by('-id')
     serializer_class = CategorySerializer
     # check user is logged in
     permission_classes = [IsAuthenticated]
-    def perform_create(self,serializer):
-        serializer.save(user=self.request.user)
-
 
 
 # ___________________ProjectViewSet_____________________
@@ -23,6 +20,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     # check user is logged in
     permission_classes = [IsAuthenticated]
     def perform_create(self,serializer):
+        serializer.save()
         serializer.save(user=self.request.user)
 
 
