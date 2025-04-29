@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated,AllowAny
 from .models import Project,Donation,Category
 from .serializers import ProjectSerializer,DonationSerializer,CategorySerializer
 from rest_framework.parsers import MultiPartParser, FormParser
-
+from rest_framework.decorators import action
 
 # ___________________ CategoriesViewSet _____________________
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -23,7 +23,13 @@ class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all().order_by('-created_at')
     serializer_class = ProjectSerializer
     # check user is logged in
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
+    def get_permissions(self):
+        if self.action in ['list','retreive']:
+            return [AllowAny()]
+        return [IsAuthenticated()]
+
+    
     def perform_create(self,serializer):
         serializer.save()
         serializer.save(user=self.request.user)
