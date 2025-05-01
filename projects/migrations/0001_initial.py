@@ -4,7 +4,7 @@ import django.db.models.deletion
 from django.conf import settings
 from django.db import migrations, models
 
-import cloudinary_storage.storage
+
 class Migration(migrations.Migration):
 
     initial = True
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('title_ar', models.CharField(max_length=255)),
                 ('description', models.TextField(blank=True, null=True)),
                 ('description_ar', models.TextField(blank=True, null=True)),
-                ('cover', models.ImageField(upload_to='project_covers/',storage=cloudinary_storage.storage.MediaCloudinaryStorage())),
+                ('cover', models.ImageField(upload_to='project_covers/')),
                 ('price_goal', models.DecimalField(decimal_places=2, max_digits=20)),
                 ('donations_amount', models.DecimalField(decimal_places=2, default=0.0, max_digits=20)),
                 ('donations_count', models.IntegerField(default=0)),
@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
             name='ProjectImage',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='project_images/'),storage=cloudinary_storage.storage.MediaCloudinaryStorage()),
+                ('image', models.ImageField(upload_to='project_images/')),
                 ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='projects.project')),
             ],
         ),
