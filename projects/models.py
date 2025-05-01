@@ -10,7 +10,7 @@ class Category (models.Model):
     title_ar=models.CharField(max_length=255)
     description =models.TextField(null=True,blank=True)
     description_ar =models.TextField(null=True,blank=True)
-    icon= models.ImageField(upload_to='categories_images/',null=True,blank=True, max_length=100)
+    icon= models.ImageField(upload_to='categories_images/',null=True,blank=True, max_length=100,storage=MediaCloudinaryStorage())
     
     def __str__(self):
         return self.title
