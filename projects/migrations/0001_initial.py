@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
             name='ProjectImage',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='project_images/')),
+                ('image', models.ImageField(upload_to='project_images/'),storage=cloudinary_storage.storage.MediaCloudinaryStorage()),
                 ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='projects.project')),
             ],
         ),
