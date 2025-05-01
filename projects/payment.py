@@ -18,7 +18,7 @@ class CreateCheckoutSessionView(APIView):
                             'currency': 'usd',
                             'product_data': {
                                 'name': 'T-shirt',
-                                'images':['https://images.unsplash.com/photo-1742240434042-11a13f062673?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8'],
+                                'images':['https://res.cloudinary.com/dovnjzpgf/image/upload/v1/media/project_covers/advantimg_ajtbvh'],
                             },
                             'unit_amount': 2000, 
                         },

@@ -22,10 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')  
-# payment
-STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')  
-STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')  
 # SECURITY WARNING: don't run with debug turned on in production!
 
 load_dotenv()
@@ -53,12 +49,32 @@ INSTALLED_APPS = [
     'corsheaders',
     'accounts',
     'projects',
+    'cloudinary',
+    'cloudinary_storage',
     'zoom_app'
 ]
 # zoom meeting
 ZOOM_CLIENT_ID = os.environ.get('ZOOM_CLIENT_ID')
 ZOOM_CLIENT_SECRET = os.environ.get('ZOOM_CLIENT_SECRET')
 ZOOM_REDIRECT_URI = os.environ.get('ZOOM_REDIRECT_URI')
+# django secret
+SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')  
+# payment
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')  
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')  
+# cloudinary
+CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUDINARY_CLOUD_NAME')  
+CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY')  
+CLOUDINARY_API_SECRET = os.environ.get('CLOUDINARY_API_SECRET')  
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': CLOUDINARY_CLOUD_NAME,
+    'API_KEY': CLOUDINARY_API_KEY,
+    'API_SECRET': CLOUDINARY_API_SECRET,
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # auth model
 AUTH_USER_MODEL = 'accounts.User'
