@@ -54,10 +54,7 @@ class DonationViewSet(viewsets.ModelViewSet):
             return  
     
         serializer.save(user=self.request.user, project=project)
-
-
-
-
+        
 # ___________________TopDonatorsViewSet_____________________
 class TopDonatorsViewSet(viewsets.ViewSet):
     permission_classes = [AllowAny]

@@ -5,11 +5,10 @@ from rest_framework.views import APIView
 from rest_framework import status
 from .models import Project
 stripe.api_key = settings.STRIPE_SECRET_KEY
-print('api_key',settings.STRIPE_SECRET_KEY)
 class CreateCheckoutSessionView(APIView):
     def post(self, request):
         try:
-            YOUR_DOMAIN = "http://localhost:3000"  
+            FRONTEND_DOMAIN = "http://localhost:3000"  
             project_id = request.data.get('projectId')
             price = request.data.get('price')
             project = Project.objects.get(id=project_id)
@@ -31,8 +30,8 @@ class CreateCheckoutSessionView(APIView):
                     },
                 ],
                 mode='payment',
-                success_url=f'{YOUR_DOMAIN}/success/',
-                cancel_url=f'{YOUR_DOMAIN}/cancel/',
+                success_url=f'{FRONTEND_DOMAIN}/success/',
+                cancel_url=f'{FRONTEND_DOMAIN}/cancel/',
             )
 
             return Response({
