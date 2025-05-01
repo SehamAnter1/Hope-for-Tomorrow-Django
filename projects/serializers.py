@@ -11,12 +11,17 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 #_______________ ProjectSerializer ________________
-class ProjectSerializer(serializers.ModelSerializer ):
-  user = serializers.ReadOnlyField(source='user.email')
-  class Meta:
+class ProjectSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='user.email')
+    categories = serializers.SerializerMethodField()
+
+    class Meta:
         model = Project
         fields = '__all__'
-        read_only_fields = ['user', 'donations_amount', 'donations_count', 'progress', 'created_at']
+        read_only_fields = ['user', 'donations_amount', 'donations_count', 'progress', 'categories', 'created_at']
+
+    def get_categories(self, obj):
+        return [category.title for category in obj.categories.all()]
 
 #_______________ DonationSerializer ________________
 
