@@ -23,6 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')  
+# payment
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')  
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')  
 # SECURITY WARNING: don't run with debug turned on in production!
 
 load_dotenv()
