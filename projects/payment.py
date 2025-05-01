@@ -9,7 +9,7 @@ class CreateCheckoutSessionView(APIView):
     def post(self, request):
         try:
             FRONTEND_DOMAIN = "http://localhost:3000"  
-            project_id = request.data.get('projectId')
+            project_id = request.data.get('project_id')
             price = request.data.get('price')
             project = Project.objects.get(id=project_id)
             project_name = project.title
