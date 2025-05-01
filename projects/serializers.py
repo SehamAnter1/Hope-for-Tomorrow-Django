@@ -25,3 +25,9 @@ class DonationSerializer(serializers.ModelSerializer):
         model = Donation
         fields = ['amount', 'project_id']
 
+#_______________ TopDonatorsSerializer ________________
+
+class TopDonatorsSerializer(serializers.Serializer):
+    user_id=serializers.IntegerField()
+    username=serializers.CharField()
+    total_donated =serializers.DecimalField(max_digits=12,decimal_places=2)

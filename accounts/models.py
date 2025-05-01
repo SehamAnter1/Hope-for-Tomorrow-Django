@@ -28,4 +28,4 @@ class User(AbstractUser):
     objects = UserManager()
 
     def __str__(self):
-        return 'created'
+        return self.first_name
