@@ -25,6 +25,7 @@ urlpatterns = [
     path('accounts/',include('accounts.urls')),
     path('zoom/', include('zoom_app.urls')),  
     path('api/', include('projects.urls')),  
+    path('api/', include('website.urls')),  
 
 
 ]

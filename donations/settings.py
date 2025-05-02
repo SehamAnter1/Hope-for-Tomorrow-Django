@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'projects',
     'cloudinary',
     'cloudinary_storage',
+    'website',
     'zoom_app'
 ]
 # zoom meeting
