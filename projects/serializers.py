@@ -16,6 +16,7 @@ class ProjectImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectImage
         fields = ['id', 'image']
+#_______________ ProjectSerializer ________________
 
 class ProjectSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.email')
@@ -48,7 +49,6 @@ class ProjectSerializer(serializers.ModelSerializer):
         return data
 
 
-#_______________ ProjectSerializer ________________
 
 #_______________ DonationSerializer ________________
 
