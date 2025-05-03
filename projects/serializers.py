@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Donation, Project,Category
+from .models import Donation, Project,Category,ProjectImage
 from rest_framework.exceptions import ValidationError
 from django.db.models import Sum,F
 
@@ -9,14 +9,19 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields ='__all__'
+        
 
+#_______________ ProjectImageSerializer ________________
+class ProjectImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectImage
+        fields = ['id', 'image']
 
-#_______________ ProjectSerializer ________________
 class ProjectSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.email')
     categories = serializers.SerializerMethodField()
     top_donors  = serializers.SerializerMethodField()
-
+    images = ProjectImageSerializer(many=True, read_only=True) 
     class Meta:
         model = Project
         fields = '__all__'
@@ -39,7 +44,11 @@ class ProjectSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         if not request or not request.parser_context.get('kwargs', {}).get('pk'):
             data.pop('top_donors', None)
+            data.pop('images', None)
         return data
+
+
+#_______________ ProjectSerializer ________________
 
 #_______________ DonationSerializer ________________
 
@@ -54,3 +63,5 @@ class TopDonatorsSerializer(serializers.Serializer):
     user_id=serializers.IntegerField()
     username=serializers.CharField()
     total_donated =serializers.DecimalField(max_digits=12,decimal_places=2)
+
+
