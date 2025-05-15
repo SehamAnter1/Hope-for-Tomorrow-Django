@@ -7,6 +7,6 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'subscription_date']   
     def validate_email(self, value):
         if Subscribers.objects.filter(email=value).exists():
-            raise serializers.ValidationError("This email is already subscribed.")
+            raise serializers.ValidationError("You are already subscribed!")
         return value
 
