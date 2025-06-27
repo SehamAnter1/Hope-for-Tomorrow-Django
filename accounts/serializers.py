@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import User
 class RegisterSerializer(serializers.ModelSerializer):
     password =serializers.CharField(write_only=True)
+    date_joined =serializers.DateTimeField(format='%Y-%m-%d %H:%M', read_only=True)
     class Meta:
         model = User
         fields = ['id','email','first_name','password','last_name','date_joined']
