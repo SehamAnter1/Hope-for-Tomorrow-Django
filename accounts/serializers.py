@@ -4,7 +4,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     password =serializers.CharField(write_only=True)
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['id','email','first_name','password','last_name','date_joined']
     def validate_email(self, value):
         """
         Validate the email to ensure it's unique and doesn't contain spaces.
