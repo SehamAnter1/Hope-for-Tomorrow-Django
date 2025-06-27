@@ -23,3 +23,8 @@ class LoginView(TokenObtainPairView):
 # ________ Reset Password View ________
 class SendResetPasswordEmailView(TokenObtainPairView):
     permission_classes = [permissions.AllowAny]
+    
+    def post(self,request):
+        email = request.data.get('email')
+        user=User.objects.filter(email=email).first()
+        # if user
