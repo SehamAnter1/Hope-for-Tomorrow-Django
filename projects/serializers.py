@@ -43,7 +43,15 @@ class ProjectSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         data = super().to_representation(instance)
         request = self.context.get('request')
-        if not request or not request.parser_context.get('kwargs', {}).get('pk'):
+        is_detail = request and request.parser_context.get('kwargs', {}).get('pk')
+        if is_detail:
+            if instance.cover and 'images' in data:
+                cover_data = {
+                    'image': instance.cover.url,
+                    'is_cover': True 
+                }
+                data['images'] = [cover_data] + data['images']
+        else:
             data.pop('top_donors', None)
             data.pop('images', None)
         return data
