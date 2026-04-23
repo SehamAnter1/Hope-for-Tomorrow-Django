@@ -25,8 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 
 load_dotenv()
-DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',') if not DEBUG else ['*']
+# DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
+DEBUG = False
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',') if not DEBUG else ['*']
 print("DEBUG",
 DEBUG)
 
@@ -55,18 +57,18 @@ INSTALLED_APPS = [
     'zoom_app'
 ]
 # zoom meeting
-ZOOM_CLIENT_ID = os.environ.get('ZOOM_CLIENT_ID')
-ZOOM_CLIENT_SECRET = os.environ.get('ZOOM_CLIENT_SECRET')
-ZOOM_REDIRECT_URI = os.environ.get('ZOOM_REDIRECT_URI')
+# ZOOM_CLIENT_ID = os.environ.get('ZOOM_CLIENT_ID')
+# ZOOM_CLIENT_SECRET = os.environ.get('ZOOM_CLIENT_SECRET')
+# ZOOM_REDIRECT_URI = os.environ.get('ZOOM_REDIRECT_URI')
 # django secret
-SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')  
+# SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')  
 # payment
-STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')  
-STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')  
+# STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')  
+# STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')  
 # cloudinary
-CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUDINARY_CLOUD_NAME')  
-CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY')  
-CLOUDINARY_API_SECRET = os.environ.get('CLOUDINARY_API_SECRET')  
+# CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUDINARY_CLOUD_NAME')  
+# CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY')  
+# CLOUDINARY_API_SECRET = os.environ.get('CLOUDINARY_API_SECRET')  
 
 
 CLOUDINARY_STORAGE = {
