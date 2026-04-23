@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 # DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
 DEBUG = False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',') if not DEBUG else ['*']
 print("DEBUG",
 DEBUG)
